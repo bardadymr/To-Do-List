@@ -40,6 +40,7 @@ a {
     box-shadow: rgba(49, 49, 49, 0.35) 0px 3px 6px;
     font-size: 13px;
     font-weight: 200px;
+    cursor: pointer;
 }
 
 .active, .category_btn:hover {
