@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/style.css">
+      <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+      <title>To-do List</title>
+    </head>
+  <body> 
+      <div class="container">
+
+            <div class="category">
+                <button data-filter="filter_all" class="category_btn">All</button>
+                <button data-filter="filter_work" class="category_btn"">Work</button>
+                <button data-filter="filter_personal" class="category_btn">Personal</button>
+                <button data-filter="filter_shopping" class="category_btn">Shopping list</button>
+            </div>
+
+            <div class="main">
+
+             <div class="todo_container">
+              <h2 class="todo_day">Today</h2>
+              <ul class="todos" id="todos_id">
+                <li class="li_filter filter_shopping"> Buy milk
+                  <img class="img_delete_task" src="/img/clear.png" alt="delete task">
+                </li>
+                <li class="li_filter filter_personal"> Read a book
+                  <img class="img_delete_task" src="/img/clear.png" alt="delete task">
+                </li>
+                <li class="li_filter filter_work">
+                    Go to the office
+                  <img class="img_delete_task" src="/img/clear.png" alt="delete task">
+                </li>
+              </ul>
+             </div>
+
+            </div>
+            <div class="add_task">
+             <a class="add_task_btn" onclick="openPopUp()">+</a>
+            </div>
+
+            <div class="pop_add_task" id="popup">
+              <div class="task_text">
+                <input id="input_text" class="input_border" type="text" placeholder="Add new To-Do">
+              </div>
+               <div class="choose_category">
+                <label class="custom_selector">
+                   Select a category
+                 <select class="select_input" name="select_category" id="select_category">
+                  <option id="select_work" value="Work">Work</option>
+                  <option id="select_personal" value="Personal">Personal</option>
+                  <option id="select_shopping" value="ShoppingList">Shopping List</option>
+                 </select>
+                </label>
+               </div>
+              <div class="buttons" id="buttons_id">
+                <button class="save" onclick="newElement(), closePopUp()">Save</button>
+                <button class="clear" onclick="closePopUp()">Clear</button>
+              </div>
+            </div>
+      </div>
+  </body>
+  <script src="/js/new.js"></script>
+</html>
