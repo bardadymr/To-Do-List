@@ -53,7 +53,7 @@ function newElement () {
 
   let image = document.createElement("img");
   image.setAttribute('class', 'img_delete_task');
-  image.setAttribute('src', '/img/clear.png');
+  image.setAttribute('src', './img/clear.png');
   image.setAttribute('alt', 'delete task');
   li.appendChild(image);
 
