@@ -197,7 +197,7 @@ a {
 ul li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     background: #f7f7f7;
     height: 40px;
     line-height: 40px;
