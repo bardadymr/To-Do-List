@@ -181,6 +181,10 @@ a {
     height: 500px;
   }
 
+  .todos {
+    padding-top: 10px;
+  }
+
   .todo_day {
     padding-top: 20px;
     font-weight: 700;
