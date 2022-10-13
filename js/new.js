@@ -1,3 +1,6 @@
+checkEmptyList ();
+
+
 function openPopUp () {
      document.getElementById('popup').style.display = "block";
 }
@@ -12,7 +15,8 @@ let i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
      var div = this.parentElement;
-     div.style.display = "none";
+     div.remove();
+     checkEmptyList ();
   }
 }
 
@@ -53,7 +57,7 @@ function newElement () {
 
   let image = document.createElement("img");
   image.setAttribute('class', 'img_delete_task');
-  image.setAttribute('src', './img/clear.png');
+  image.setAttribute('src', '/img/clear.png');
   image.setAttribute('alt', 'delete task');
   li.appendChild(image);
 
@@ -62,10 +66,13 @@ let i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
      var div = this.parentElement;
-     div.style.display = "none";
+     div.remove();
+     checkEmptyList ();
   }
 }
+checkEmptyList ();
 }
+
 
 /* Filter */ 
 
@@ -108,3 +115,13 @@ if (links.length) {
   });
 }
 
+
+function checkEmptyList () {
+  let tasksList = document.querySelector('#todos_id');
+  let emptyContainer = document.querySelector('.image_empty');
+ if(tasksList.children.length > 0) {
+emptyContainer.style.display = "none";
+} else if (tasksList.children.length === 0) {
+  emptyContainer.style.display = "inline-block";
+}
+};
