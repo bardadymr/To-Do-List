@@ -1,6 +1,7 @@
 @import url(./reset.css);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 
+
 body {
     font-family: 'Roboto', sans-serif;
     background: rgb(255,122,40);
@@ -22,6 +23,10 @@ a {
     
 }
 
+.main {
+  height: 570px;
+}
+
 .category {
     width: 400px;
     height: 40px;
@@ -40,7 +45,6 @@ a {
     box-shadow: rgba(49, 49, 49, 0.35) 0px 3px 6px;
     font-size: 13px;
     font-weight: 200px;
-    cursor: pointer;
 }
 
 .active, .category_btn:hover {
@@ -49,15 +53,10 @@ a {
     box-shadow: rgba(49, 49, 49, 0.35) 0px 2px 3px;
 }
 
-.main {
-    height: 570px;
-}
-
 .add_task {
     padding: 10px 0px 0px 0px;
     font-size: 40px;
     font-weight: 700px;
-    cursor: pointer;
 }
 
 .add_task_btn {
@@ -68,11 +67,13 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .add_task_btn:hover {
     background-color: rgb(112, 97, 255);
     color: rgb(255, 255, 255);
+
 }
 
 /* Pop up */
@@ -170,7 +171,7 @@ a {
   /* to do list */
 
   .todo_container {
-    margin-top: 45px;
+    margin-top: 15px;
     width: 440px;
     height: 500px;
   }
@@ -257,6 +258,29 @@ ul li.checked {
     padding-left: 10px;
     font-size: 17px;
   }
+
+  /* Empty Image */
+  .image_empty {
+    display: block;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .empty {
+    margin-left: 60px;
+    margin-right: 60px;
+    height: 300px;
+  }
+
+  .text_empty {
+    font-size: 22px;
+    font-weight: 500;
+    color: #6b6b6b;
+    padding-left: 120px;
+    padding-top: 60px;
+
+  }
+
   @media (max-width: 550px ) {
     .container {
       width: 100%;
@@ -308,7 +332,6 @@ ul li.checked {
   z-index: 1;
 }
 
-
 .add_task {
   padding: 0 0 0 0;
   font-size: 40px;
@@ -331,7 +354,7 @@ ul li.checked {
 }
 
 .main {
-  min-height: 710px;
+  min-height: 800px;
   height: 100%;
   width: 100%;
   background-color: #fff;
