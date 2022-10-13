@@ -346,6 +346,7 @@ ul li.checked {
   background-color: rgb(170, 161, 255);
   color: rgb(49, 49, 49);
   width: 100%;
+  position: fixed;
   height: 30%;
   display: flex;
   justify-content: center;
