@@ -276,8 +276,9 @@ ul li.checked {
     font-size: 22px;
     font-weight: 500;
     color: #6b6b6b;
-    padding-left: 120px;
+    padding-left: 110px;
     padding-top: 60px;
+    margin-right: 10px;
 
   }
 
