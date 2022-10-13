@@ -122,6 +122,6 @@ function checkEmptyList () {
  if(tasksList.children.length > 0) {
 emptyContainer.style.display = "none";
 } else if (tasksList.children.length === 0) {
-  emptyContainer.style.display = "inline-block";
+  emptyContainer.style.display = "block";
 }
 };
