@@ -388,4 +388,15 @@ ul li.checked {
     padding-left: 30px;
     padding-bottom: 10px;
 }
+ .image_empty {
+    display: block;
+    width: 90%;
+    margin-top: 40px;
+  }
+
+  .empty {
+    margin-left: 60px;
+    margin-right: 60px;
+    height: 280px;
+  }
   }
