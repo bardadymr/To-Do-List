@@ -13,13 +13,13 @@ tasksArray.forEach(function(task) {
   const taskHTML = `<li class="${task.category}" 
   id="${task.id}">
   ${task.text}
-  <img class="img_delete_task" src="/img/clear.png" alt="delete task">
+  <img class="img_delete_task" src="./img/clear.png" alt="delete task">
   </li>`
 
   const taskHTMLDone = `<li class="${task.category} checked"
   id="${task.id}">
   ${task.text}
-  <img class="img_delete_task" src="/img/clear.png" alt="delete task">
+  <img class="img_delete_task" src="./img/clear.png" alt="delete task">
   </li>`
 
   if(task.done === true) {
@@ -112,7 +112,7 @@ li.appendChild(textValue);
 
   let image = document.createElement("img");
   image.setAttribute('class', 'img_delete_task');
-  image.setAttribute('src', '/img/clear.png');
+  image.setAttribute('src', './img/clear.png');
   image.setAttribute('alt', 'delete task');
   li.appendChild(image);
 
