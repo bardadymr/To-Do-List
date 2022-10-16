@@ -1,5 +1,36 @@
-checkEmptyList ();
 
+
+let tasksArray = [];
+
+if(localStorage.getItem('tasks')) {
+   tasksArray = JSON.parse(localStorage.getItem('tasks'));
+   
+}
+
+tasksArray.forEach(function(task) {
+
+  const todosList = document.getElementById('todos_id');
+  const taskHTML = `<li class="${task.category}" 
+  id="${task.id}">
+  ${task.text}
+  <img class="img_delete_task" src="/img/clear.png" alt="delete task">
+  </li>`
+
+  const taskHTMLDone = `<li class="${task.category} checked"
+  id="${task.id}">
+  ${task.text}
+  <img class="img_delete_task" src="/img/clear.png" alt="delete task">
+  </li>`
+
+  if(task.done === true) {
+    todosList.insertAdjacentHTML('beforeend', taskHTMLDone);
+  } else {
+    todosList.insertAdjacentHTML('beforeend', taskHTML);
+  }
+})
+
+
+checkEmptyList ();
 
 function openPopUp () {
      document.getElementById('popup').style.display = "block";
@@ -9,25 +40,47 @@ function closePopUp () {
     document.getElementById('popup').style.display = "none";
     }
 
-/* Close task */
+/* Delete task */
 let close = document.getElementsByClassName("img_delete_task");
 let i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
      var div = this.parentElement;
+     let taskId = div.id;
+     const index = tasksArray.findIndex(function (task) {
+      if (task.id == taskId) {
+        return true
+      }
+     })
      div.remove();
+     tasksArray.splice(index, 1);
      checkEmptyList ();
+     saveToLocalStorage ();
   }
 }
 
 /* Checked Task */
+const containerTask = document.querySelector('ul');
 
-let container = document.querySelector('ul');
-container.addEventListener('click', (e) => {
-  if (e.target.tagName === 'LI') {
-    e.target.classList.toggle('checked');
-  }
-}, false);
+containerTask.addEventListener('click', checkTask);
+
+
+function checkTask (ev) {
+  if (ev.target.classList.contains("li_filter")) {
+    ev.target.classList.toggle('checked');
+  };
+
+  const clickedTask = tasksArray.find(function(task) {
+    if(task.id == ev.target.id) {
+      return true
+    }
+  })
+
+  clickedTask.done = !clickedTask.done
+  saveToLocalStorage ();
+  
+};
+
 
 /* Add new task */
 
@@ -46,7 +99,9 @@ function newElement () {
     li.setAttribute('class', 'li_filter filter_shopping');
   };
 
-  li.appendChild(textValue);
+  const categoryName = li.getAttribute('class');
+  
+li.appendChild(textValue);
 
   if(inputValue === '') {
     alert("Please, add your task!")
@@ -57,7 +112,7 @@ function newElement () {
 
   let image = document.createElement("img");
   image.setAttribute('class', 'img_delete_task');
-  image.setAttribute('src', './img/clear.png');
+  image.setAttribute('src', '/img/clear.png');
   image.setAttribute('alt', 'delete task');
   li.appendChild(image);
 
@@ -66,11 +121,36 @@ let i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
      var div = this.parentElement;
+     let taskId = div.id;
+     const index = tasksArray.findIndex(function (task) {
+      if (task.id == taskId) {
+        return true
+      }
+     })
      div.remove();
+     tasksArray.splice(index, 1);
      checkEmptyList ();
+
+     saveToLocalStorage ();
   }
 }
+
+
+const newTask = {
+  id: Date.now(),
+  text: inputValue,
+  done: false,
+  category: categoryName
+};
+
+li.setAttribute('id', newTask.id);
+
+tasksArray.push(newTask);
+
 checkEmptyList ();
+
+saveToLocalStorage ();
+
 }
 
 
@@ -115,6 +195,7 @@ if (links.length) {
   });
 }
 
+/* Empty list image */
 
 function checkEmptyList () {
   let tasksList = document.querySelector('#todos_id');
@@ -123,5 +204,11 @@ function checkEmptyList () {
 emptyContainer.style.display = "none";
 } else if (tasksList.children.length === 0) {
   emptyContainer.style.display = "block";
+ }
 }
-};
+
+/* LocalStorage */
+
+function saveToLocalStorage () {
+  localStorage.setItem('tasks', JSON.stringify(tasksArray));
+}
